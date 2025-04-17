@@ -1,5 +1,6 @@
 package org.generation.mexico.client.web;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.generation.mexico.client.business.ClientBusiness;
 import org.generation.mexico.client.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,13 @@ public class ClientController {
 
     @Autowired
     private ClientBusiness clientBusiness;
+
+    public ClientController() {
+    }
+
+    public ClientController(ClientBusiness clientBusiness) {
+        this.clientBusiness = clientBusiness;
+    }
 
 
     @GetMapping

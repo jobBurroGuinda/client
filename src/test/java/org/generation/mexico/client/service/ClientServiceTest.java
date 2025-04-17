@@ -1,5 +1,6 @@
 package org.generation.mexico.client.service;
 
+import org.generation.mexico.client.exception.ClientNotFoundException;
 import org.generation.mexico.client.model.Client;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,9 +34,9 @@ public class ClientServiceTest {
     void setUp() {
         testClient = new Client();
         testClient.setId(1L);
-        testClient.setName("Test User");
-        testClient.setEmail("test@example.com");
-        testClient.setPhoneNumber("1234567890");
+        testClient.setName("Fulanito de Tal");
+        testClient.setEmail("fulano@gmail.com");
+        testClient.setPhoneNumber("5872948231");
     }
 
     @Test

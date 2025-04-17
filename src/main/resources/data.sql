@@ -1,4 +1,4 @@
-INSERT INTO clients (name, email, phone_number, created_at, updated_at)
+INSERT INTO client (name, last_name, email, phone_number, created_at, updated_at)
 VALUES
-    ('John Doe', 'john@example.com', '1234567890', NOW(), NOW()),
-    ('Jane Smith', 'jane@example.com', '0987654321', NOW(), NOW());
+    ('Vanesa', "Gonzalez", 'vane@gmail.com', '4435845252', NOW(), NOW()),
+    ('Karen', "Perez", 'karen@outlook.com', '2225849722', NOW(), NOW());
