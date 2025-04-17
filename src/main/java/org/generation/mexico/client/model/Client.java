@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Data
 @Builder
@@ -25,10 +27,25 @@ public class Client {
     private String lastName;
 
     @Column(length = 35)
-    private int phoneNumber;
+    private String phoneNumber;
 
     @Column(length = 40)
     @Email(message = "El formato del email es incorrecto")
     private String email;
+
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
+
+    @PrePersist
+    protected void onCreate() {
+        createdAt = LocalDateTime.now();
+        updatedAt = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedAt = LocalDateTime.now();
+    }
 
 }
