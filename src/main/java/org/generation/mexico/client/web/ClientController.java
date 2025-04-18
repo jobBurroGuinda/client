@@ -1,10 +1,10 @@
 package org.generation.mexico.client.web;
 
-//import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.generation.mexico.client.business.ClientBusiness;
 import org.generation.mexico.client.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,9 +30,6 @@ public class ClientController {
     public ClientController(ClientBusiness clientBusiness) {
         this.clientBusiness = clientBusiness;
     }
-
-
-
 
     @GetMapping
     @Operation(summary = "Show all clients", description = "Show all clients saved on database")
@@ -89,6 +86,7 @@ public class ClientController {
 
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "Save a client", description = "Save a client on database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Client saved",
@@ -143,6 +141,7 @@ public class ClientController {
 
 
     @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @Operation(summary = "Delete a client", description = "Delete a client from database")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Client deleted",

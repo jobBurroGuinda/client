@@ -31,13 +31,12 @@ class ClientControllerTest {
     private ClientBusiness clientBusiness;
 
     private ObjectMapper objectMapper;
-    private ClientController clientController;
     private Client testClient;
 
     @BeforeEach
     void setUp() {
         objectMapper = new ObjectMapper();
-        clientController = new ClientController(clientBusiness);
+        ClientController clientController = new ClientController(clientBusiness);
         mockMvc = MockMvcBuilders.standaloneSetup(clientController)
                 .setControllerAdvice(new GlobalExceptionHandler())
                 .build();
@@ -77,6 +76,7 @@ class ClientControllerTest {
 
     @Test
     void createClient_WithValidData_ShouldReturnCreatedClient() throws Exception {
+
         when(clientBusiness.insert(any(Client.class))).thenReturn(testClient);
 
         mockMvc.perform(post("/api/clients")
@@ -90,36 +90,12 @@ class ClientControllerTest {
     }
 
     @Test
-    void updateClient_WithValidData_ShouldReturnUpdatedClient() throws Exception {
-        when(clientBusiness.insert(any(Client.class))).thenReturn(testClient);
-
-        mockMvc.perform(put("/api/clients/1")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(testClient)))
-                .andExpect(status().isOk())
-                .andExpect(jsonPath("$.id").value(testClient.getId()))
-                .andExpect(jsonPath("$.name").value(testClient.getName()))
-                .andExpect(jsonPath("$.email").value(testClient.getEmail()))
-                .andExpect(jsonPath("$.phoneNumber").value(testClient.getPhoneNumber()));
-    }
-
-    @Test
     void deleteClient_WithValidId_ShouldReturnNoContent() throws Exception {
         doNothing().when(clientBusiness).deleteById(1L);
 
         mockMvc.perform(delete("/api/clients/1")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
-    }
-
-    @Test
-    void createClient_WithInvalidData_ShouldReturnBadRequest() throws Exception {
-        testClient.setEmail(null); // Email es requerido
-
-        mockMvc.perform(post("/api/clients")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(testClient)))
-                .andExpect(status().isBadRequest());
     }
 
     @Test

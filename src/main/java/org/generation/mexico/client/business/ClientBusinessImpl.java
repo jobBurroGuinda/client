@@ -23,18 +23,18 @@ public class ClientBusinessImpl implements ClientBusiness {
 
 
     @Override
-    @ResponseStatus(HttpStatus.CREATED)
     public Client insert(Client client) {
         try {
             Client clientSaved = clientRepository.save(client);
-            String message = String.format("The client %s %s has been upgraded", clientSaved.getName(), clientSaved.getLastName());            LOGGER.info("The client has been saved");
+            String message = String.format("The client %s %s has been upgraded", clientSaved.getName(), clientSaved.getLastName());
+            LOGGER.info("The client has been saved");
             LOGGER.info(message);
             return clientSaved;
         } catch (Exception e) {
             LOGGER.error("The client have not been saved");
             LOGGER.error(e.getMessage());
+            return null;
         }
-        return clientRepository.save(client);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ClientBusinessImpl implements ClientBusiness {
             Client clientUpdated = clientRepository.save(client.get());
             return new ResponseEntity<>(clientUpdated, HttpStatus.OK);
         }
-        return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new Client(), HttpStatus.NOT_FOUND);
     }
 
     @Override

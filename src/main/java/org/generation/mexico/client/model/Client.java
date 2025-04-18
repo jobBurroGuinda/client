@@ -2,7 +2,9 @@ package org.generation.mexico.client.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +14,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Client {
 
     @Id
@@ -24,7 +27,8 @@ public class Client {
     @Column(length = 35)
     private String lastName;
 
-    @Column(length = 35)
+    @Column(length = 10)
+    @Pattern(regexp = "^[0-9]{10}$", message = "Phone number must be 10 digits")
     private String phoneNumber;
 
     @Column(length = 40)
