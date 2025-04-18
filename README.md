@@ -7,14 +7,14 @@ By Job Adolfo Salinas Hernandez
 ## Requeriments
 
 - GIT
-- Java 17
+- Java 17+
 - Maven
 - MySQL 5.7+
 
 
 ## Settings
 
-1. Clonar el repositorio:
+1. Clone repository:
 ```bash
 git clone https://github.com/jobBurroGuinda/client.git
 ```
@@ -25,7 +25,11 @@ git clone https://github.com/jobBurroGuinda/client.git
 
 ## Documentation
 
+```bash
 http://server:port/swagger-ui.html
+```
 
 For instance:
+```bash
 http://localhost:8080/swagger-ui.html
+```
