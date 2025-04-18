@@ -1,5 +1,6 @@
 package org.generation.mexico.client.web;
 
+//import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.generation.mexico.client.business.ClientBusiness;
 import org.generation.mexico.client.model.Client;
@@ -17,7 +18,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
 @RestController
 @RequestMapping("/api/clients")
-@Tag(name = "Client Controller", description = "Client management API")
+@Tag(name = "Client Controller", description = "Client management API of Generation Mexico")
 public class ClientController {
 
     @Autowired
@@ -29,6 +30,8 @@ public class ClientController {
     public ClientController(ClientBusiness clientBusiness) {
         this.clientBusiness = clientBusiness;
     }
+
+
 
 
     @GetMapping
